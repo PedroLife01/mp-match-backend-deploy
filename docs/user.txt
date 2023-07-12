@@ -1,0 +1,37 @@
+API documentation
+
+user:
+  create:
+    POST /api/user
+
+    body:
+      {
+        "user": {
+          "name" : <name>,
+          "email" : <email>, 
+          "password" <password>
+        }
+      }
+
+    success: 201 created
+    fail: 400 bad request
+
+  login:
+    POST /auth/login
+
+    body:
+      {
+        "email": <email>,
+        "password": <password>
+      }
+
+      success:
+        200 ok and
+        {
+	        "auth_token": <jwt_token>,
+        	"exp": <token_expiration_date>
+        }
+
+      all other requests must include the token as an Authorization header
+
+      fail: 401 unauthorized
